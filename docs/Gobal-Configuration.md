@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Global configuration
@@ -28,19 +28,17 @@ The `options` object accepts the following properties:
 - Fetch API RequestInitiator...
 
 ```javascript
-
 // To root of you project like App.tsx main.tsx
 
-import { useSetBaseConfiguration } from "snap-fetch"
+import { useSetBaseConfiguration } from "snap-fetch";
 const baseUrl = "https://jsonplaceholder.typicode.com";
 
-  useSetBaseConfiguration({
-    baseUrl, // Required
-    disableCaching: boolean, // if true caching will be disabled, // this is global, can be overridden by individual disableCaching properties
-    // Below has no effect if you are using your own fetch function
-    headers: new Headers({
-      Authorization: `Bearer ${token}`,
-    }),
-  });
-
+useSetBaseConfiguration({
+  baseUrl, // Required
+  disableCaching: boolean, // if true caching will be disabled, // this is global, can be overridden by individual disableCaching properties
+  // Below has no effect if you are using your own fetch function
+  headers: new Headers({
+    Authorization: `Bearer ${token}`,
+  }),
+});
 ```

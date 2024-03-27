@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Adding to redux store
@@ -26,19 +26,18 @@ yarn add snap-fetch
 ### Add SnapFetch Reducers
 
 ```js
- // highlight-next-line
+// highlight-next-line
 import { name, reducer } from "snap-fetch";
 
 export const rootReducer = combineReducers({
-    // highlight-next-line
+  // highlight-next-line
   [name]: reducer,
 });
-
 ```
 
 ### Run SnapFetch Sagas
-```js 
 
+```js
 /**
  * Create the store with dynamic reducers
  */
@@ -61,11 +60,8 @@ export function configureAppStore() {
       }).concat(sagaMiddleware),
   });
 
-  
   // highlight-next-line
   sagaMiddleware.run(rootSnapFetchSaga);
   return { store };
 }
-
-
 ```

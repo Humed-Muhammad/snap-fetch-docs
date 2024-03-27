@@ -13,6 +13,11 @@ function HomepageHeader() {
     <header className={clsx(styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title" style={{ fontSize: "70px" }}>
+          <img
+            style={{ width: "55px" }}
+            src={require("@site/static/img/tool.png").default}
+            alt=""
+          />
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>

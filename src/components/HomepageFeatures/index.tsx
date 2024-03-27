@@ -15,7 +15,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Snap-Fetch was designed to be easily installed and used to get you up
-        and running quickly. It is to configure and use as the same time.
+        and running quickly. It is easy to configure and use as the same time.
       </>
     ),
   },

@@ -1,14 +1,23 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Cache-Behavior
 
-
-Snap-fetch will use the **endpoint + queryParameters** to generate a unique hashKey that will bes used to store the data into the redux store, this will make sure that subsequent requests to the same **endpoint + queryParameters** will be ignored which eventually avoid unnecessary requests being made, unless the query parameters or pagination parameters are changed.
+Snap-fetch will use the **endpoint + queryParameters** to generate a unique hashKey that will be used to store the data into the redux store, this will make sure that subsequent requests to the same **endpoint + queryParameters** will be ignored which eventually avoid unnecessary requests being made, unless the query parameters or pagination parameters are changed.
 
 :::info
-  By the way snap-fetch has a built-in pagination for queries, and also you can avoid using the pagination feature by using the **single** flag for specific queries.
+By the way snap-fetch has a built-in pagination for queries, and also you can avoid using the pagination feature by using the **single** flag for specific queries.
+
+Example:
+
+```ts
+const { data, isLoading, error } = useSnapFetchQuery<Users>("users", {
+  tags: "getUsers",
+  single: true,
+});
+```
+
 :::
 
 Snap-Fetch has a way of handling **Caching** and **Invalidating** data fetched from api, it does so by giving you the option to keep the cached data as long as you want by providing ways to do that,
@@ -16,7 +25,7 @@ Snap-Fetch has a way of handling **Caching** and **Invalidating** data fetched f
 1. One by providing both global and query specific **cacheExpirationTime** flag, which will automatically expire the cached data and refetch when a component mount again. Default is **2 minutes or 120 seconds**.
 
 :::info
-**cacheExpirationTime behaves differently depending on disableCaching option**L
+**cacheExpirationTime behaves differently depending on disableCaching option**
 
 A. If **disableCache** is set to **true**, which tells **snap-fetch** to avoid caching the data fetched from api, then **cacheExpirationTime** will be ignored,
 
@@ -26,9 +35,9 @@ B. If **disableCache** is set to **false** then **cachingExpirationTime** will b
 :::
 
 2. Secondly by providing a **polling** functionality to always get fresh data from the server between intervals.
-:::info
-**pollingInterval** is a query specific flag
-:::
+   :::info
+   **pollingInterval** is a query specific flag
+   :::
 
 ## Example
 
@@ -55,20 +64,19 @@ const ComponentThree = () => {
   ...
 };
 ```
+
 **ComponentOne** and **ComponentThree** has the same endpoint, and **ComponentTwo** is different. if three of the Component are Mounted, **snap-fetch** will only make **two separate requests only**, because ComponentOne and ComponentThree have the same endpoint.
 
 ```javascript
-
 export const App = () => {
   return (
     <>
-    <ComponentOne/>
-    <ComponentTwo/>
-    <ComponentThree/>
+      <ComponentOne />
+      <ComponentTwo />
+      <ComponentThree />
     </>
-  )
-}
-
+  );
+};
 ```
 
 ### What if we change Query Parameters
