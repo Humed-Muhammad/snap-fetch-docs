@@ -32,7 +32,7 @@ As you can see snap-fetch is typescript first and you can specify your actual re
 In the example below the transformed response is **number** and the actual data coming from the api is **Todo**.
 
 ```ts
-const response = useSnapFetchMutation<number, Todo>(`todos`, {
+const response = useSnapMutation<number, Todo>(`todos`, {
   invalidateTags: ["get-4"],
   method: "GET",
   transformResponse: (res) => res.id,

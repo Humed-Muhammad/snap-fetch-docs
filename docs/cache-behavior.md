@@ -12,7 +12,7 @@ By the way snap-fetch has a built-in pagination for queries, and also you can av
 Example:
 
 ```ts
-const { data, isLoading, error } = useSnapFetchQuery<Users>("users", {
+const { data, isLoading, error } = useSnapQuery<Users>("users", {
   tags: "getUsers",
   single: true,
 });
@@ -44,23 +44,23 @@ B. If **disableCache** is set to **false** then **cachingExpirationTime** will b
 - Take a look at the following example,
 
 ```javascript
-import { useSnapFetchQuery } from 'snap-fetch';
+import { useSnapQuery } from 'snap-fetch';
 
 const ComponentOne = () => {
   ...
-  const { data, isLoading, error } = useSnapFetchQuery<Users>('user/1');
+  const { data, isLoading, error } = useSnapQuery<Users>('user/1');
   ...
 };
 
 const ComponentTwo = () => {
   ...
-  const { data, isLoading, error } = useSnapFetchQuery<Users>('user/2');
+  const { data, isLoading, error } = useSnapQuery<Users>('user/2');
   ...
 };
 
 const ComponentThree = () => {
   ...
-  const { data, isLoading, error } = useSnapFetchQuery<Users>('user/1');
+  const { data, isLoading, error } = useSnapQuery<Users>('user/1');
   ...
 };
 ```
@@ -82,11 +82,11 @@ export const App = () => {
 ### What if we change Query Parameters
 
 ```javascript
-import { useSnapFetchQuery } from 'snap-fetch';
+import { useSnapQuery } from 'snap-fetch';
 
 const ComponentOne = () => {
   ...
-  const { data, isLoading, error } = useSnapFetchQuery<Users>('user/1', {
+  const { data, isLoading, error } = useSnapQuery<Users>('user/1', {
     filter: {
       status: 'PENDING'
     }
@@ -96,13 +96,13 @@ const ComponentOne = () => {
 
 const ComponentTwo = () => {
   ...
-  const { data, isLoading, error } = useSnapFetchQuery<Users>('user/2');
+  const { data, isLoading, error } = useSnapQuery<Users>('user/2');
   ...
 };
 
 const ComponentThree = () => {
   ...
-  const { data, isLoading, error } = useSnapFetchQuery<Users>('user/1');
+  const { data, isLoading, error } = useSnapQuery<Users>('user/1');
   ...
 };
 ```

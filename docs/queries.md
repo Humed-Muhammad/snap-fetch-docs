@@ -36,7 +36,7 @@ As you can see snap-fetch is typescript first and you can specify your actual re
 In the example below the transformed response is **string** and the actual data coming from the api is **Todo**.
 
 ```ts
-const response = useSnapFetchQuery<string, Todo>(`todos/4`, {
+const response = useSnapQuery<string, Todo>(`todos/4`, {
   tags: "get-4",
   single: true,
   transformResponse: (res) => res.title,
